@@ -172,6 +172,26 @@
   .list ul li strong { color: var(--ink); font-weight: 600; }
   .list .base { border-top: 1px solid var(--line); padding-top: 22px; }
 
+  .card > :last-child { margin-bottom: 0; }
+
+  /* Geral */
+  .sub-list { display: grid; gap: 14px; }
+  .sub-item-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 13px; margin-bottom: 6px; }
+  .sub-item-head strong { font-size: 14px; }
+  .sub-item-head .pct-val { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); }
+  .sub-item-head .muted { color: var(--ink-3); font-size: 12px; font-weight: 500; }
+  .mini-bar { height: 8px; border-radius: 4px; background: var(--muted); overflow: hidden; }
+  .mini-bar span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+  .scale-table .share { display: block; font-size: 12px; font-weight: 500; color: var(--ink-3); margin-top: 2px; white-space: nowrap; }
+  .sw.r01 { background: var(--accent); }
+  .sw.r03 { background: var(--accent-2); }
+  .sw.r04 { background: #b9c8f0; }
+  .sw.ext01 { background: repeating-linear-gradient(135deg, var(--accent) 0 2px, #c9d6f6 2px 5px); }
+  .c-solid.r01 { background: var(--accent); color: #fff; }
+  .c-solid.r03 { background: var(--accent-2); color: #fff; }
+  .c-solid.r04 { background: #b9c8f0; color: var(--ink); }
+  .c-ext.r01 { background: repeating-linear-gradient(135deg, var(--accent) 0 2px, #c9d6f6 2px 5px); }
+
   /* Placeholder */
   .pending-note { font-size: 14px; color: var(--ink-2); margin-bottom: 16px; }
   .pending-list { list-style: none; display: grid; gap: 8px; }
@@ -196,13 +216,219 @@
 <div class="page">
 
   <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="geral">Geral</button>
     <button class="tab" role="tab" data-tab="r01">R01</button>
     <button class="tab" role="tab" data-tab="r03">R03</button>
     <button class="tab" role="tab" data-tab="r04">R04</button>
   </nav>
 
+  <!-- Geral -->
+  <div class="panel" id="geral" role="tabpanel">
+    <header>
+      <div>
+        <div class="eyebrow">Mapeamento de operação</div>
+        <h1>GERAL</h1>
+      </div>
+      <div class="period">
+        <span class="period-label">Período de referência dos dados de gasto</span>
+        <strong>23/10 a 26/10 (4 dias completos)</strong>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Cenário atual da operação</h2>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="label">Gasto no período</div>
+          <div class="value">R$ 88.367,43</div>
+          <div class="sub">R01 + R03 + R04</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Média diária</div>
+          <div class="value">R$ 22.091,86</div>
+          <div class="sub">gasto total / 4 dias</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Campanhas ativas</div>
+          <div class="value">23</div>
+          <div class="sub">9 com pagamento por conversão</div>
+        </div>
+        <div class="kpi hl">
+          <div class="label">Volume em pagamento por conversão</div>
+          <div class="value">65,3%</div>
+          <div class="sub">R$ 57.660,35 do gasto total</div>
+          <div class="sub">média de R$ 14.415,09 por dia</div>
+        </div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="split-title">Distribuição do gasto</div>
+          <div class="bar">
+            <div class="seg a" style="width:65.3%">65,3%</div>
+            <div class="seg v" style="width:34.7%">34,7%</div>
+          </div>
+          <div class="legend">
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, R01</span><span class="amt">R$ 56.148,65</span><span class="pct">63,5%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, R03</span><span class="amt">R$ 1.511,70</span><span class="pct">1,7%</span></div>
+            <div class="legend-row subtotal"><span></span><span>Subtotal pagamento por conversão<span class="leg-sub">média de R$ 14.415,09 por dia</span></span><span class="amt">R$ 57.660,35</span><span class="pct">65,3%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Volátil, R01</span><span class="amt">R$ 16.510,80</span><span class="pct">18,7%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Volátil, R03</span><span class="amt">R$ 3.914,42</span><span class="pct">4,4%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Volátil, R04</span><span class="amt">R$ 10.281,86</span><span class="pct">11,6%</span></div>
+            <div class="legend-row subtotal"><span></span><span>Subtotal volátil<span class="leg-sub">média de R$ 7.676,77 por dia</span></span><span class="amt">R$ 30.707,08</span><span class="pct">34,7%</span></div>
+            <div class="legend-row total"><span></span><span>Total</span><span class="amt">R$ 88.367,43</span><span class="pct">100%</span></div>
+          </div>
+        </div>
+        <div class="structure">
+          <div class="split-title">Pagamento por conversão por suboperação</div>
+          <div class="sub-list">
+            <div>
+              <div class="sub-item-head"><strong>R01</strong><span><span class="pct-val">77,3%</span> <span class="muted">· 2 de 8 campanhas</span></span></div>
+              <div class="mini-bar"><span style="width:77.3%"></span></div>
+            </div>
+            <div>
+              <div class="sub-item-head"><strong>R03</strong><span><span class="pct-val">27,9%</span> <span class="muted">· 7 de 10 campanhas</span></span></div>
+              <div class="mini-bar"><span style="width:27.9%"></span></div>
+            </div>
+            <div>
+              <div class="sub-item-head"><strong>R04</strong><span><span class="pct-val">0%</span> <span class="muted">· 100% volátil</span></span></div>
+              <div class="mini-bar"><span style="width:0"></span></div>
+            </div>
+          </div>
+          <p>Percentual do gasto de cada suboperação que vai para pagamento por conversão.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Faixas de escala por suboperação</h2>
+      <p class="mix-note">Faixas da operação somando a meta de cada suboperação.</p>
+      <div class="table-wrap">
+        <table class="scale-table">
+          <thead>
+            <tr><th></th><th>Atual</th><th class="goal">Faixa 1</th><th class="goal">Faixa 2</th></tr>
+          </thead>
+          <tbody>
+            <tr class="total">
+              <th scope="row">Total da operação<span class="row-sub">média diária</span></th>
+              <td><span class="v">R$ 22,09 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 50 a 60 mil/dia</span><span class="inc">+ R$ 27,91 a 37,91 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 90 a 100 mil/dia</span><span class="inc">+ R$ 67,91 a 77,91 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--accent)"></span>R01</span><span class="row-sub">60% conversão · 40% volátil</span></th>
+              <td><span class="v">R$ 18,16 mil/dia</span><span class="share">82,2% do total</span></td>
+              <td class="goal"><span class="v">R$ 30 a 40 mil/dia</span><span class="inc">+ R$ 11,84 a 21,84 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 40 a 50 mil/dia</span><span class="inc">+ R$ 21,84 a 31,84 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--accent-2)"></span>R03</span><span class="row-sub">60% conversão · 40% volátil</span></th>
+              <td><span class="v">R$ 1,36 mil/dia</span><span class="share">6,1% do total</span></td>
+              <td class="goal"><span class="v">R$ 10 mil/dia</span><span class="inc">+ R$ 8,64 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 25 mil/dia</span><span class="inc">+ R$ 23,64 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:#b9c8f0"></span>R04</span><span class="row-sub">100% volátil</span></th>
+              <td><span class="v">R$ 2,57 mil/dia</span><span class="share">11,6% do total</span></td>
+              <td class="goal"><span class="v">R$ 10 mil/dia</span><span class="inc">+ R$ 7,43 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 25 mil/dia</span><span class="inc">+ R$ 22,43 mil/dia</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chart" role="img" aria-label="Gasto diário por suboperação: atual, faixa 1 e faixa 2">
+        <div class="chart-head">
+          <div class="split-title">Responsabilidade de cada suboperação por faixa</div>
+          <div class="chart-legend">
+            <span><i class="sw r01"></i>R01</span>
+            <span><i class="sw r03"></i>R03</span>
+            <span><i class="sw r04"></i>R04</span>
+            <span><i class="sw ext01"></i>Variação da faixa da R01 (mín. ao máx.)</span>
+          </div>
+        </div>
+        <div class="c-rows">
+          <div class="c-row">
+            <div class="c-label">Atual</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:22.09%">
+                <div class="c-grp" style="flex:18.16"><div class="c-solid r01" style="flex:1" title="R01: R$ 18,16 mil/dia"><span>18,16</span></div></div>
+                <div class="c-grp" style="flex:1.36"><div class="c-solid r03" style="flex:1" title="R03: R$ 1,36 mil/dia"></div></div>
+                <div class="c-grp" style="flex:2.57"><div class="c-solid r04" style="flex:1" title="R04: R$ 2,57 mil/dia"></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 22,09 mil</div>
+          </div>
+          <div class="c-row">
+            <div class="c-label">Faixa 1</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:60%">
+                <div class="c-grp" style="flex:40" title="R01: R$ 30 a 40 mil/dia"><div class="c-solid r01" style="flex:30"><span>30 a 40</span></div><div class="c-ext r01" style="flex:10"></div></div>
+                <div class="c-grp" style="flex:10"><div class="c-solid r03" style="flex:1" title="R03: R$ 10 mil/dia"><span>10</span></div></div>
+                <div class="c-grp" style="flex:10"><div class="c-solid r04" style="flex:1" title="R04: R$ 10 mil/dia"><span>10</span></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 50 a 60 mil</div>
+          </div>
+          <div class="c-row">
+            <div class="c-label">Faixa 2</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:100%">
+                <div class="c-grp" style="flex:50" title="R01: R$ 40 a 50 mil/dia"><div class="c-solid r01" style="flex:40"><span>40 a 50</span></div><div class="c-ext r01" style="flex:10"></div></div>
+                <div class="c-grp" style="flex:25"><div class="c-solid r03" style="flex:1" title="R03: R$ 25 mil/dia"><span>25</span></div></div>
+                <div class="c-grp" style="flex:25"><div class="c-solid r04" style="flex:1" title="R04: R$ 25 mil/dia"><span>25</span></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 90 a 100 mil</div>
+          </div>
+          <div class="c-row c-axis">
+            <div class="c-label"></div>
+            <div class="c-track"><span style="left:0">0</span><span style="left:20%">20</span><span style="left:40%">40</span><span style="left:60%">60</span><span style="left:80%">80</span><span style="left:100%">100</span></div>
+            <div class="c-total">R$ mil/dia</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Faixas de escala por tipo de compra</h2>
+      <p class="mix-note">Soma da divisão-alvo de cada suboperação: R01 e R03 com 60% pagamento por conversão e 40% volátil, R04 100% volátil.</p>
+      <div class="table-wrap">
+        <table class="scale-table">
+          <thead>
+            <tr><th></th><th>Atual</th><th class="goal">Faixa 1</th><th class="goal">Faixa 2</th></tr>
+          </thead>
+          <tbody>
+            <tr class="total">
+              <th scope="row">Total da operação<span class="row-sub">média diária</span></th>
+              <td><span class="v">R$ 22,09 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 50 a 60 mil/dia</span><span class="inc">+ R$ 27,91 a 37,91 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 90 a 100 mil/dia</span><span class="inc">+ R$ 67,91 a 77,91 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--accent)"></span>Pagamento por conversão</span><span class="row-sub">R01 + R03</span></th>
+              <td><span class="v">R$ 14,42 mil/dia</span><span class="share">65,3% do total</span></td>
+              <td class="goal"><span class="v">R$ 24 a 30 mil/dia</span><span class="inc">+ R$ 9,58 a 15,58 mil/dia</span><span class="share">48 a 50% do total</span></td>
+              <td class="goal"><span class="v">R$ 39 a 45 mil/dia</span><span class="inc">+ R$ 24,58 a 30,58 mil/dia</span><span class="share">43 a 45% do total</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--muted)"></span>Volátil</span><span class="row-sub">R01 + R03 + R04</span></th>
+              <td><span class="v">R$ 7,68 mil/dia</span><span class="share">34,7% do total</span></td>
+              <td class="goal"><span class="v">R$ 26 a 30 mil/dia</span><span class="inc">+ R$ 18,32 a 22,32 mil/dia</span><span class="share">50 a 52% do total</span></td>
+              <td class="goal"><span class="v">R$ 51 a 55 mil/dia</span><span class="inc">+ R$ 43,32 a 47,32 mil/dia</span><span class="share">55 a 57% do total</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
   <!-- R01 -->
-  <div class="panel" id="r01" role="tabpanel">
+  <div class="panel" id="r01" role="tabpanel" hidden>
 
     <header>
       <div>
@@ -828,7 +1054,7 @@
     var tabs = document.querySelectorAll('.tab');
     var panels = document.querySelectorAll('.panel');
     function show(id) {
-      if (!document.getElementById(id)) id = 'r01';
+      if (!document.getElementById(id)) id = 'geral';
       tabs.forEach(function (t) {
         var on = t.dataset.tab === id;
         t.classList.toggle('active', on);
