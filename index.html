@@ -110,6 +110,26 @@
   .step.goal { background: var(--soft); }
   .step.goal .value { color: var(--accent); }
 
+  /* Scale table */
+  .mix-note { font-size: 13px; color: var(--ink-2); margin-bottom: 12px; }
+  .mix-note strong { color: var(--ink); }
+  .table-wrap { overflow-x: auto; margin-bottom: 28px; border: 1px solid var(--line); border-radius: 10px; }
+  .scale-table { width: 100%; border-collapse: collapse; min-width: 640px; }
+  .scale-table th, .scale-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .scale-table tbody tr:last-child th, .scale-table tbody tr:last-child td { border-bottom: 0; }
+  .scale-table thead th { font-size: 12px; font-weight: 500; color: var(--ink-2); background: #fafbfc; padding-top: 10px; padding-bottom: 10px; }
+  .scale-table .goal { background: var(--soft); }
+  .scale-table .goal2 { background: #e2e9fb; }
+  .scale-table th.goal:nth-child(4), .scale-table td.goal:nth-child(4) { background: #e0e8fb; }
+  .scale-table thead th.goal { color: var(--accent); font-weight: 600; }
+  .scale-table tbody th { font-size: 14px; font-weight: 600; width: 26%; }
+  .row-name { display: flex; align-items: center; gap: 8px; }
+  .row-sub { display: block; font-size: 12px; font-weight: 500; color: var(--ink-3); margin-top: 2px; }
+  .scale-table .v { display: block; font-size: 16px; font-weight: 700; letter-spacing: -.01em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .scale-table .inc { display: block; font-size: 12px; font-weight: 600; color: var(--accent); margin-top: 2px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .scale-table tr.total .v { font-size: 18px; }
+  .scale-table tr.total th, .scale-table tr.total td { border-bottom: 2px solid var(--line); }
+
   /* Scale list */
   .list { list-style: none; display: grid; gap: 22px; }
   .item-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
@@ -243,22 +263,33 @@
     <section class="card">
       <h2>Possibilidades de escala</h2>
 
-      <div class="track">
-        <div class="step now">
-          <div class="label">Atual</div>
-          <div class="value">R$ 18,2 mil/dia</div>
-          <div class="sub">média do período</div>
-        </div>
-        <div class="step goal">
-          <div class="label">Faixa 1</div>
-          <div class="value">R$ 30 a 40 mil/dia</div>
-          <div class="sub">primeira etapa de escala</div>
-        </div>
-        <div class="step goal">
-          <div class="label">Faixa 2</div>
-          <div class="value">R$ 40 a 50 mil/dia</div>
-          <div class="sub">segunda etapa de escala</div>
-        </div>
+      <p class="mix-note">Distribuição-alvo nas faixas: <strong>60% pagamento por conversão</strong> e <strong>40% volátil</strong>.</p>
+      <div class="table-wrap">
+        <table class="scale-table">
+          <thead>
+            <tr><th></th><th>Atual</th><th class="goal">Faixa 1</th><th class="goal goal2">Faixa 2</th></tr>
+          </thead>
+          <tbody>
+            <tr class="total">
+              <th scope="row">Total<span class="row-sub">média diária</span></th>
+              <td><span class="v">R$ 18,16 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 30 a 40 mil/dia</span><span class="inc">+ R$ 11,84 a 21,84 mil/dia</span></td>
+              <td class="goal goal2"><span class="v">R$ 40 a 50 mil/dia</span><span class="inc">+ R$ 21,84 a 31,84 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--accent)"></span>Pagamento por conversão</span><span class="row-sub">hoje 77,3% · alvo 60%</span></th>
+              <td><span class="v">R$ 14,04 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 18 a 24 mil/dia</span><span class="inc">+ R$ 3,96 a 9,96 mil/dia</span></td>
+              <td class="goal goal2"><span class="v">R$ 24 a 30 mil/dia</span><span class="inc">+ R$ 9,96 a 15,96 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--muted)"></span>Volátil</span><span class="row-sub">hoje 22,7% · alvo 40%</span></th>
+              <td><span class="v">R$ 4,13 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 12 a 16 mil/dia</span><span class="inc">+ R$ 7,87 a 11,87 mil/dia</span></td>
+              <td class="goal goal2"><span class="v">R$ 16 a 20 mil/dia</span><span class="inc">+ R$ 11,87 a 15,87 mil/dia</span></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <ul class="list">
