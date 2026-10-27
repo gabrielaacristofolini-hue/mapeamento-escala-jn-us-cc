@@ -507,9 +507,11 @@
     <section class="card">
       <h2>Segmentação usada atualmente na maior parte das campanhas</h2>
       <div class="seg-row">
-        <div class="chip"><div class="k">Segmentação</div><div class="v">Aberta, sem segmentação</div></div>
+        <div class="chip"><div class="k">Tópico</div><div class="v">Cartão de crédito</div></div>
         <span class="plus">+</span>
-        <div class="chip"><div class="k">Conteúdo</div><div class="v">Cartão de crédito e finanças</div></div>
+        <div class="chip"><div class="k">Tópico</div><div class="v">Finanças</div></div>
+        <span class="plus">+</span>
+        <div class="chip"><div class="k">Segmentação</div><div class="v">Aberta, sem segmentação</div></div>
       </div>
     </section>
 
@@ -643,15 +645,179 @@
         <div class="eyebrow">Mapeamento de operação</div>
         <h1>SUB-R04</h1>
       </div>
+      <div class="period">
+        <span class="period-label">Período de referência dos dados de gasto</span>
+        <strong>23/10 a 26/10 (4 dias completos)</strong>
+      </div>
     </header>
+
     <section class="card">
-      <h2>Em construção</h2>
-      <p class="pending-note">Mapeamento ainda não preenchido.</p>
-      <ul class="pending-list">
-        <li>Cenário atual <span>a preencher</span></li>
-        <li>Segmentação usada atualmente <span>a preencher</span></li>
-        <li>Faixas de escala <span>a preencher</span></li>
-        <li>Possibilidades de escala <span>a preencher</span></li>
+      <h2>Cenário atual</h2>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="label">Gasto no período</div>
+          <div class="value">R$ 10.281,86</div>
+          <div class="sub">23/10 a 26/10</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Média diária</div>
+          <div class="value">R$ 2.570,47</div>
+          <div class="sub">gasto total / 4 dias</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Campanhas ativas</div>
+          <div class="value">5</div>
+          <div class="sub">nenhuma com pagamento por conversão</div>
+        </div>
+        <div class="kpi hl">
+          <div class="label">Volume em pagamento por conversão</div>
+          <div class="value">0%</div>
+          <div class="sub">estrutura 100% volátil</div>
+        </div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="split-title">Distribuição do gasto</div>
+          <div class="bar">
+            <div class="seg v" style="width:100%">100% volátil</div>
+          </div>
+          <div class="legend">
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>CPA desejado por interação, ID 24294683680</span><span class="amt">R$ 4.293,39</span><span class="pct">41,8%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>CPA desejado por interação, ID 24288901394</span><span class="amt">R$ 3.012,18</span><span class="pct">29,3%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>MaxConv, ID 24376551008</span><span class="amt">R$ 1.271,53</span><span class="pct">12,4%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>MaxConv, ID 24380854766</span><span class="amt">R$ 1.091,45</span><span class="pct">10,6%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>MaxConv, ID 24380855225</span><span class="amt">R$ 613,31</span><span class="pct">6,0%</span></div>
+            <div class="legend-row total"><span></span><span>Total estrutura volátil<span class="leg-sub">média de R$ 2.570,47 por dia</span></span><span class="amt">R$ 10.281,86</span><span class="pct">100%</span></div>
+          </div>
+        </div>
+        <div class="structure">
+          <div class="split-title">Estrutura de campanhas</div>
+          <div class="grid" style="grid-template-columns:repeat(5,1fr)">
+            <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          </div>
+          <p><strong>0 de 5</strong> campanhas pagam por conversão. A estrutura é <strong>100%</strong> volátil: 2 em CPA desejado por interação e 3 em MaxConv.</p>
+        </div>
+      </div>
+
+      <div class="alt">
+        <div>
+          <div class="split-title">Alternância da dinâmica de conversão</div>
+          <p>Não há campanhas com pagamento por conversão nesta suboperação. A estrutura é 100% volátil.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Segmentação usada atualmente na maior parte das campanhas</h2>
+      <div class="seg-row">
+        <div class="chip"><div class="k">Canais</div><div class="v">Canais específicos</div></div>
+        <span class="plus">+</span>
+        <div class="chip"><div class="k">Tópico</div><div class="v">Finanças</div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Faixas de escala</h2>
+      <p class="mix-note">Distribuição-alvo nas faixas: <strong>100% volátil</strong>, sem estrutura de pagamento por conversão.</p>
+      <div class="table-wrap">
+        <table class="scale-table">
+          <thead>
+            <tr><th></th><th>Atual</th><th class="goal">Faixa 1</th><th class="goal">Faixa 2</th></tr>
+          </thead>
+          <tbody>
+            <tr class="total">
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--muted)"></span>Volátil</span><span class="row-sub">100% do gasto</span></th>
+              <td><span class="v">R$ 2.570,47/dia</span></td>
+              <td class="goal"><span class="v">R$ 10 mil/dia</span><span class="inc">+ R$ 7,43 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 25 mil/dia</span><span class="inc">+ R$ 22,43 mil/dia</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chart" role="img" aria-label="Gasto diário volátil: atual, faixa 1 e faixa 2">
+        <div class="chart-head">
+          <div class="split-title">Gasto diário por faixa (100% volátil)</div>
+        </div>
+        <div class="c-rows">
+          <div class="c-row">
+            <div class="c-label">Atual</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:10.28%">
+                <div class="c-grp" style="flex:1"><div class="c-solid vol" style="flex:1" title="Volátil: R$ 2.570,47/dia"><span>2,57</span></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 2,57 mil</div>
+          </div>
+          <div class="c-row">
+            <div class="c-label">Faixa 1</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:40%">
+                <div class="c-grp" style="flex:1"><div class="c-solid vol" style="flex:1" title="Volátil: R$ 10 mil/dia"><span>10</span></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 10 mil</div>
+          </div>
+          <div class="c-row">
+            <div class="c-label">Faixa 2</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:100%">
+                <div class="c-grp" style="flex:1"><div class="c-solid vol" style="flex:1" title="Volátil: R$ 25 mil/dia"><span>25</span></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 25 mil</div>
+          </div>
+          <div class="c-row c-axis">
+            <div class="c-label"></div>
+            <div class="c-track"><span style="left:0">0</span><span style="left:20%">5</span><span style="left:40%">10</span><span style="left:60%">15</span><span style="left:80%">20</span><span style="left:100%">25</span></div>
+            <div class="c-total">R$ mil/dia</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Possibilidades de escala</h2>
+      <ul class="list">
+        <li>
+          <div class="item-head"><span class="num">01</span><h3>Escala vertical e ajuste de lance</h3></div>
+          <ul>
+            <li>Nas estruturas já ativas que pagam por CPA desejado por interação.</li>
+            <li>Aumento do orçamento programado para superdimensionar a entrega.</li>
+            <li>Leve ajuste no CPA desejado conforme o leilão do dia.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="item-head"><span class="num">02</span><h3>Novas campanhas</h3></div>
+          <ul>
+            <li>Iniciar campanhas em <strong>MaxConv</strong> segmentadas para <strong>canais específicos já validados</strong>.</li>
+            <li>Manter em MaxConv até atingirem 50 a 100 conversões por dia.</li>
+            <li>Migrar para <strong>CPA desejado por interação</strong>, com aumento agressivo de orçamento.</li>
+            <li>Migração feita após a meia-noite do dia em que a campanha deve mudar de estratégia.</li>
+            <li>Após a migração, a campanha passa a compor a estrutura que paga por interação.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="item-head"><span class="num">03</span><h3>Expansão de segmentação</h3></div>
+          <ul>
+            <li>Inserir novos tópicos e públicos no grupo de anúncios já ativo.</li>
+            <li>Ou criar novos grupos de anúncios com variações de segmentação.</li>
+            <li>Hoje: canais e tópico finanças. Foco da expansão: público-alvo e outros tópicos.</li>
+          </ul>
+        </li>
+        <li class="base">
+          <div class="item-head"><span class="num">BASE</span><h3>Exclusões por script, hora a hora</h3></div>
+          <ul>
+            <li>Já em operação: o script exclui posicionamentos a cada hora com base em gasto por URL, impressões e outros critérios.</li>
+            <li>Manter o script rodando durante toda a escala.</li>
+            <li>Manter rotina de limpeza das exclusões feitas pelo script.</li>
+          </ul>
+        </li>
       </ul>
     </section>
   </div>
