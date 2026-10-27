@@ -425,15 +425,211 @@
         <div class="eyebrow">Mapeamento de operação</div>
         <h1>SUB-R03</h1>
       </div>
+      <div class="period">
+        <span class="period-label">Período de referência dos dados de gasto</span>
+        <strong>23/10 a 26/10 (4 dias completos)</strong>
+      </div>
     </header>
     <section class="card">
-      <h2>Em construção</h2>
-      <p class="pending-note">Mapeamento ainda não preenchido.</p>
-      <ul class="pending-list">
-        <li>Cenário atual <span>a preencher</span></li>
-        <li>Segmentação usada atualmente <span>a preencher</span></li>
-        <li>Faixas de escala <span>a preencher</span></li>
-        <li>Possibilidades de escala <span>a preencher</span></li>
+      <h2>Cenário atual</h2>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="label">Gasto no período</div>
+          <div class="value">R$ 5.426,12</div>
+          <div class="sub">23/10 a 26/10</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Média diária</div>
+          <div class="value">R$ 1.356,53</div>
+          <div class="sub">gasto total / 4 dias</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Campanhas ativas</div>
+          <div class="value">10</div>
+          <div class="sub">7 com pagamento por conversão</div>
+        </div>
+        <div class="kpi hl">
+          <div class="label">Volume em pagamento por conversão</div>
+          <div class="value">27,9%</div>
+          <div class="sub">R$ 1.511,70 do gasto total</div>
+          <div class="sub">média de R$ 377,93 por dia</div>
+        </div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="split-title">Distribuição do gasto</div>
+          <div class="bar">
+            <div class="seg a" style="width:27.9%">27,9%</div>
+            <div class="seg v" style="width:72.1%">72,1%</div>
+          </div>
+          <div class="legend">
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID 23061326358</span><span class="amt">R$ 820,50</span><span class="pct">15,1%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID 23055580476</span><span class="amt">R$ 194,40</span><span class="pct">3,6%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID 23061320046</span><span class="amt">R$ 180,00</span><span class="pct">3,3%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID 23071415167</span><span class="amt">R$ 144,00</span><span class="pct">2,7%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID 23074678076</span><span class="amt">R$ 72,00</span><span class="pct">1,3%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID 23061328041</span><span class="amt">R$ 57,60</span><span class="pct">1,1%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID 23273935840</span><span class="amt">R$ 43,20</span><span class="pct">0,8%</span></div>
+            <div class="legend-row subtotal"><span></span><span>Subtotal pagamento por conversão<span class="leg-sub">média de R$ 377,93 por dia</span></span><span class="amt">R$ 1.511,70</span><span class="pct">27,9%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Estrutura volátil (CPA por interação e MaxConv)<span class="leg-sub">média de R$ 978,61 por dia</span></span><span class="amt">R$ 3.914,42</span><span class="pct">72,1%</span></div>
+            <div class="legend-row total"><span></span><span>Total</span><span class="amt">R$ 5.426,12</span><span class="pct">100%</span></div>
+          </div>
+        </div>
+        <div class="structure">
+          <div class="split-title">Estrutura de campanhas</div>
+          <div class="grid" style="grid-template-columns:repeat(5,1fr)">
+            <div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div><div class="cell on"></div>
+            <div class="cell on"></div><div class="cell on"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          </div>
+          <p><strong>7 de 10</strong> campanhas pagam por conversão e concentram <strong>27,9%</strong> do volume. As outras 3 operam em lance volátil e, junto com o gasto de campanhas fora da estrutura atual, respondem por <strong>72,1%</strong>.</p>
+        </div>
+      </div>
+
+      <div class="alt">
+        <div>
+          <div class="split-title">Alternância da dinâmica de conversão</div>
+          <p>Campanhas com pagamento por conversão disponíveis para a alternância.</p>
+        </div>
+        <div class="ids">
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23061326358<span class="id-sub">R$ 820,50 no período</span></div></div>
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23055580476<span class="id-sub">R$ 194,40 no período</span></div></div>
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23061320046<span class="id-sub">R$ 180,00 no período</span></div></div>
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23071415167<span class="id-sub">R$ 144,00 no período</span></div></div>
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23074678076<span class="id-sub">R$ 72,00 no período</span></div></div>
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23061328041<span class="id-sub">R$ 57,60 no período</span></div></div>
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23273935840<span class="id-sub">R$ 43,20 no período</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Segmentação usada atualmente na maior parte das campanhas</h2>
+      <div class="seg-row">
+        <div class="chip" style="border-style:dashed"><div class="k">Segmentação</div><div class="v">A confirmar</div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Faixas de escala</h2>
+      <p class="mix-note">Distribuição-alvo nas faixas: <strong>60% pagamento por conversão</strong> e <strong>40% volátil</strong>.</p>
+      <div class="table-wrap">
+        <table class="scale-table">
+          <thead>
+            <tr><th></th><th>Atual</th><th class="goal">Faixa 1</th><th class="goal">Faixa 2</th></tr>
+          </thead>
+          <tbody>
+            <tr class="total">
+              <th scope="row">Total<span class="row-sub">média diária</span></th>
+              <td><span class="v">R$ 1.356,53/dia</span></td>
+              <td class="goal"><span class="v">R$ 10 mil/dia</span><span class="inc">+ R$ 8,64 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 25 mil/dia</span><span class="inc">+ R$ 23,64 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--accent)"></span>Pagamento por conversão</span><span class="row-sub">hoje 27,9% · alvo 60%</span></th>
+              <td><span class="v">R$ 377,93/dia</span></td>
+              <td class="goal"><span class="v">R$ 6 mil/dia</span><span class="inc">+ R$ 5,62 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 15 mil/dia</span><span class="inc">+ R$ 14,62 mil/dia</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="row-name"><span class="dot" style="background:var(--muted)"></span>Volátil</span><span class="row-sub">hoje 72,1% · alvo 40%</span></th>
+              <td><span class="v">R$ 978,61/dia</span></td>
+              <td class="goal"><span class="v">R$ 4 mil/dia</span><span class="inc">+ R$ 3,02 mil/dia</span></td>
+              <td class="goal"><span class="v">R$ 10 mil/dia</span><span class="inc">+ R$ 9,02 mil/dia</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="chart" role="img" aria-label="Gasto diário por tipo de compra: atual, faixa 1 e faixa 2">
+        <div class="chart-head">
+          <div class="split-title">Composição do gasto diário por faixa</div>
+          <div class="chart-legend">
+            <span><i class="sw ppc"></i>Pagamento por conversão</span>
+            <span><i class="sw vol"></i>Volátil</span>
+          </div>
+        </div>
+        <div class="c-rows">
+          <div class="c-row">
+            <div class="c-label">Atual</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:5.43%">
+                <div class="c-grp" style="flex:0.378"><div class="c-solid ppc" style="flex:1" title="Pagamento por conversão: R$ 377,93/dia"></div></div>
+                <div class="c-grp" style="flex:0.979"><div class="c-solid vol" style="flex:1" title="Volátil: R$ 978,61/dia"></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 1,36 mil</div>
+          </div>
+          <div class="c-row">
+            <div class="c-label">Faixa 1</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:40%">
+                <div class="c-grp" style="flex:6"><div class="c-solid ppc" style="flex:1" title="Pagamento por conversão: R$ 6 mil/dia"><span>6</span></div></div>
+                <div class="c-grp" style="flex:4"><div class="c-solid vol" style="flex:1" title="Volátil: R$ 4 mil/dia"><span>4</span></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 10 mil</div>
+          </div>
+          <div class="c-row">
+            <div class="c-label">Faixa 2</div>
+            <div class="c-track">
+              <div class="c-grid"><i style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i style="left:100%"></i></div>
+              <div class="c-bar" style="width:100%">
+                <div class="c-grp" style="flex:15"><div class="c-solid ppc" style="flex:1" title="Pagamento por conversão: R$ 15 mil/dia"><span>15</span></div></div>
+                <div class="c-grp" style="flex:10"><div class="c-solid vol" style="flex:1" title="Volátil: R$ 10 mil/dia"><span>10</span></div></div>
+              </div>
+            </div>
+            <div class="c-total">R$ 25 mil</div>
+          </div>
+          <div class="c-row c-axis">
+            <div class="c-label"></div>
+            <div class="c-track"><span style="left:0">0</span><span style="left:20%">5</span><span style="left:40%">10</span><span style="left:60%">15</span><span style="left:80%">20</span><span style="left:100%">25</span></div>
+            <div class="c-total">R$ mil/dia</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Possibilidades de escala</h2>
+      <ul class="list">
+        <li>
+          <div class="item-head"><span class="num">01</span><h3>Escala vertical e ajuste de lance</h3></div>
+          <ul>
+            <li>Nas estruturas já ativas que pagam por conversão ou por CPA desejado por interação.</li>
+            <li>Aumento do orçamento programado para superdimensionar a entrega.</li>
+            <li>Leve ajuste no CPA desejado conforme o leilão do dia.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="item-head"><span class="num">02</span><h3>Novas campanhas</h3></div>
+          <ul>
+            <li>Iniciar campanhas em <strong>MaxConv</strong> segmentadas para <strong>canais específicos já validados</strong>.</li>
+            <li>Manter em MaxConv até atingirem 50 a 100 conversões por dia.</li>
+            <li>Migrar para <strong>CPA desejado por interação</strong>, com aumento agressivo de orçamento.</li>
+            <li>Migração feita após a meia-noite do dia em que a campanha deve mudar de estratégia.</li>
+            <li>Após a migração, a campanha passa a compor a estrutura que paga por interação.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="item-head"><span class="num">03</span><h3>Expansão de segmentação</h3></div>
+          <ul>
+            <li>Inserir novos tópicos e públicos no grupo de anúncios já ativo.</li>
+            <li>Ou criar novos grupos de anúncios com variações de segmentação.</li>
+            <li>Foco da expansão: público-alvo e outros tópicos.</li>
+          </ul>
+        </li>
+        <li class="base">
+          <div class="item-head"><span class="num">BASE</span><h3>Exclusões por script, hora a hora</h3></div>
+          <ul>
+            <li>Já em operação: o script exclui posicionamentos a cada hora com base em gasto por URL, impressões e outros critérios.</li>
+            <li>Manter o script rodando durante toda a escala.</li>
+            <li>Manter rotina de limpeza das exclusões feitas pelo script.</li>
+          </ul>
+        </li>
       </ul>
     </section>
   </div>
