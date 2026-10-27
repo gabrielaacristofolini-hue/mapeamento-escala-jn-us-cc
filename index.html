@@ -75,6 +75,7 @@
   .dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
   .legend-row .amt { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 500; text-align: right; }
   .legend-row .pct { font-variant-numeric: tabular-nums; color: var(--ink-3); width: 52px; text-align: right; }
+  .leg-sub { display: block; font-size: 12px; color: var(--ink-3); }
   .legend-row.total { border-top: 1px solid var(--line); padding-top: 8px; font-weight: 600; }
 
   .structure .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
@@ -204,7 +205,7 @@
           <div class="legend">
             <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID final 868</span><span class="amt">R$ 33.179,67</span><span class="pct">45,7%</span></div>
             <div class="legend-row"><span class="dot" style="background:var(--accent-2)"></span><span>Pagamento por conversão, ID final 128</span><span class="amt">R$ 22.968,98</span><span class="pct">31,6%</span></div>
-            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Estrutura volátil (CPA por interação e MaxConv)</span><span class="amt">R$ 16.510,80</span><span class="pct">22,7%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Estrutura volátil (CPA por interação e MaxConv)<span class="leg-sub">média de R$ 4.127,70 por dia</span></span><span class="amt">R$ 16.510,80</span><span class="pct">22,7%</span></div>
             <div class="legend-row total"><span></span><span>Total</span><span class="amt">R$ 72.659,45</span><span class="pct">100%</span></div>
           </div>
         </div>
@@ -214,7 +215,7 @@
             <div class="cell on"></div><div class="cell on"></div><div class="cell"></div><div class="cell"></div>
             <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
           </div>
-          <p><strong>2 de 8</strong> campanhas pagam por conversão e concentram <strong>77,3%</strong> do volume. As outras 6 operam em lance volátil.</p>
+          <p><strong>2 de 8</strong> campanhas pagam por conversão e concentram <strong>77,3%</strong> do volume. As outras 6 operam em lance volátil, com média de <strong>R$ 4.127,70 por dia</strong>.</p>
         </div>
       </div>
 
