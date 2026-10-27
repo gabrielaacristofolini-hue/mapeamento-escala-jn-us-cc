@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapeamento de Escala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --card: #ffffff;
+    --ink: #14171f;
+    --ink-2: #4a5160;
+    --ink-3: #8a909c;
+    --line: #e4e6eb;
+    --accent: #1f4fd1;
+    --accent-2: #6f8fe6;
+    --muted: #d5d9e0;
+    --soft: #eef2fc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 32px 16px 40px;
+  }
+  .page { max-width: 1040px; margin: 0 auto; display: grid; gap: 20px; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
+  .tab { appearance: none; background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; padding: 10px 18px; font: inherit; font-size: 14px; font-weight: 600; color: var(--ink-3); cursor: pointer; }
+  .tab:hover { color: var(--ink-2); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .panel { display: grid; gap: 20px; }
+  .panel[hidden] { display: none; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 0 4px 4px; flex-wrap: wrap; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; margin-top: 4px; }
+  .period { font-size: 13px; color: var(--ink-2); text-align: right; }
+  .period strong { display: block; color: var(--ink-2); font-weight: 600; font-size: 13px; }
+  .period-label { display: block; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+  h2 { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+
+  /* KPIs */
+  .kpis { display: grid; grid-template-columns: 1fr 1fr 0.8fr 1.25fr; gap: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .kpi { padding: 18px 20px; border-right: 1px solid var(--line); }
+  .kpi:last-child { border-right: 0; }
+  .kpi.hl { background: var(--soft); }
+  .kpi .label { font-size: 12px; color: var(--ink-2); }
+  .kpi .value { font-size: 24px; font-weight: 700; letter-spacing: -.02em; margin-top: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .kpi.hl .value { color: var(--accent); }
+  .kpi .sub { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+  .kpi-split { margin-top: 10px; padding-top: 10px; border-top: 1px solid #d6e0f8; display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .kpi-split span:nth-child(odd) { color: var(--ink-2); }
+  .kpi-split span:nth-child(even) { color: var(--ink); font-weight: 600; text-align: right; }
+
+  /* Spend split */
+  .split { margin-top: 28px; display: grid; grid-template-columns: 1fr 260px; gap: 32px; align-items: start; }
+  .split-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+  .bar { display: flex; height: 36px; border-radius: 8px; overflow: hidden; gap: 2px; }
+  .seg { display: flex; align-items: center; padding: 0 12px; font-size: 13px; font-weight: 600; color: #fff; font-variant-numeric: tabular-nums; }
+  .seg.a { background: var(--accent); }
+  .seg.b { background: var(--accent-2); }
+  .seg.v { background: var(--muted); color: var(--ink-2); }
+  .legend { margin-top: 14px; display: grid; gap: 8px; }
+  .legend-row { display: grid; grid-template-columns: 12px 1fr auto auto; gap: 10px; align-items: center; font-size: 13px; }
+  .dot { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .legend-row .amt { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 500; text-align: right; }
+  .legend-row .pct { font-variant-numeric: tabular-nums; color: var(--ink-3); width: 52px; text-align: right; }
+  .legend-row.total { border-top: 1px solid var(--line); padding-top: 8px; font-weight: 600; }
+
+  .structure .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .cell { height: 40px; border-radius: 6px; background: var(--muted); }
+  .cell.on { background: var(--accent); }
+  .structure p { font-size: 13px; color: var(--ink-2); margin-top: 12px; }
+  .structure p strong { color: var(--ink); }
+
+  /* Alternância */
+  .alt { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 14px; }
+  .alt .split-title { margin-bottom: 2px; }
+  .alt p { font-size: 13px; color: var(--ink-2); }
+  .ids { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .id { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 15px; font-weight: 600; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+  .id-sub { display: block; font-family: "Inter", system-ui, sans-serif; font-size: 12px; font-weight: 500; color: var(--ink-2); }
+
+  /* Segmentation */
+  .seg-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .chip { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; background: #fafbfc; }
+  .chip .k { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+  .chip .v { font-size: 14px; font-weight: 600; }
+  .plus { color: var(--ink-3); font-weight: 500; }
+
+  /* Scale track */
+  .track { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 28px; }
+  .step { padding: 16px 20px; border-right: 1px solid var(--line); }
+  .step:last-child { border-right: 0; }
+  .step .label { font-size: 12px; color: var(--ink-2); }
+  .step .value { font-size: 22px; font-weight: 700; letter-spacing: -.02em; font-variant-numeric: tabular-nums; margin-top: 2px; }
+  .step .sub { font-size: 12px; color: var(--ink-3); }
+  .step.now { background: #fafbfc; }
+  .step.goal { background: var(--soft); }
+  .step.goal .value { color: var(--accent); }
+
+  /* Scale list */
+  .list { list-style: none; display: grid; gap: 22px; }
+  .item-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .item-head .num { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: .06em; min-width: 22px; }
+  .item-head h3 { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+  .list ul { padding-left: 52px; display: grid; gap: 4px; }
+  .list ul li { font-size: 14px; color: var(--ink-2); }
+  .list ul li::marker { color: var(--ink-3); }
+  .list ul li strong { color: var(--ink); font-weight: 600; }
+  .list .base { border-top: 1px solid var(--line); padding-top: 22px; }
+
+  /* Placeholder */
+  .pending-note { font-size: 14px; color: var(--ink-2); margin-bottom: 16px; }
+  .pending-list { list-style: none; display: grid; gap: 8px; }
+  .pending-list li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 16px; border: 1px dashed var(--muted); border-radius: 8px; font-size: 14px; font-weight: 500; }
+  .pending-list li span { font-size: 12px; color: var(--ink-3); font-weight: 500; }
+
+  @media (max-width: 820px) {
+    .kpis { grid-template-columns: 1fr 1fr; }
+    .split { grid-template-columns: 1fr; }
+    .kpi:nth-child(2) { border-right: 0; }
+    .kpi:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 520px) {
+    .kpis, .track { grid-template-columns: 1fr; }
+    .kpi, .step { border-right: 0; border-bottom: 1px solid var(--line); }
+    .card { padding: 20px; }
+    .list ul { padding-left: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="r01">R01</button>
+    <button class="tab" role="tab" data-tab="r03">R03</button>
+    <button class="tab" role="tab" data-tab="r04">R04</button>
+  </nav>
+
+  <!-- R01 -->
+  <div class="panel" id="r01" role="tabpanel">
+
+    <header>
+      <div>
+        <div class="eyebrow">Mapeamento de operação</div>
+        <h1>SUB-R01</h1>
+      </div>
+      <div class="period">
+        <span class="period-label">Período de referência dos dados de gasto</span>
+        <strong>23/10 a 26/10 (4 dias completos)</strong>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Cenário atual</h2>
+
+      <div class="kpis">
+        <div class="kpi">
+          <div class="label">Gasto no período</div>
+          <div class="value">R$ 72.659,45</div>
+          <div class="sub">23/10 a 26/10</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Média diária</div>
+          <div class="value">R$ 18.164,86</div>
+          <div class="sub">gasto total / 4 dias</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Campanhas ativas</div>
+          <div class="value">8</div>
+          <div class="sub">2 com pagamento por conversão</div>
+        </div>
+        <div class="kpi hl">
+          <div class="label">Volume em pagamento por conversão</div>
+          <div class="value">77,3%</div>
+          <div class="sub">R$ 56.148,65 do gasto total</div>
+          <div class="kpi-split">
+            <span>ID final 868</span><span>R$ 33.179,67</span>
+            <span>ID final 128</span><span>R$ 22.968,98</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="split">
+        <div>
+          <div class="split-title">Distribuição do gasto</div>
+          <div class="bar">
+            <div class="seg a" style="width:45.7%">45,7%</div>
+            <div class="seg b" style="width:31.6%">31,6%</div>
+            <div class="seg v" style="width:22.7%">22,7%</div>
+          </div>
+          <div class="legend">
+            <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID final 868</span><span class="amt">R$ 33.179,67</span><span class="pct">45,7%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--accent-2)"></span><span>Pagamento por conversão, ID final 128</span><span class="amt">R$ 22.968,98</span><span class="pct">31,6%</span></div>
+            <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Estrutura volátil (CPA por interação e MaxConv)</span><span class="amt">R$ 16.510,80</span><span class="pct">22,7%</span></div>
+            <div class="legend-row total"><span></span><span>Total</span><span class="amt">R$ 72.659,45</span><span class="pct">100%</span></div>
+          </div>
+        </div>
+        <div class="structure">
+          <div class="split-title">Estrutura de campanhas</div>
+          <div class="grid">
+            <div class="cell on"></div><div class="cell on"></div><div class="cell"></div><div class="cell"></div>
+            <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+          </div>
+          <p><strong>2 de 8</strong> campanhas pagam por conversão e concentram <strong>77,3%</strong> do volume. As outras 6 operam em lance volátil.</p>
+        </div>
+      </div>
+
+      <div class="alt">
+        <div>
+          <div class="split-title">Alternância da dinâmica de conversão</div>
+          <p>Campanhas com pagamento por conversão disponíveis para a alternância.</p>
+        </div>
+        <div class="ids">
+          <div class="id"><span class="dot" style="background:var(--accent)"></span><div>23338544868<span class="id-sub">R$ 33.179,67 no período</span></div></div>
+          <div class="id"><span class="dot" style="background:var(--accent-2)"></span><div>23266280128<span class="id-sub">R$ 22.968,98 no período</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Segmentação usada atualmente na maior parte das campanhas</h2>
+      <div class="seg-row">
+        <div class="chip"><div class="k">Canais</div><div class="v">Canais específicos</div></div>
+        <span class="plus">+</span>
+        <div class="chip"><div class="k">Tópico</div><div class="v">Cartão de crédito</div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Possibilidades de escala</h2>
+
+      <div class="track">
+        <div class="step now">
+          <div class="label">Atual</div>
+          <div class="value">R$ 18,2 mil/dia</div>
+          <div class="sub">média do período</div>
+        </div>
+        <div class="step goal">
+          <div class="label">Faixa 1</div>
+          <div class="value">R$ 30 a 40 mil/dia</div>
+          <div class="sub">primeira etapa de escala</div>
+        </div>
+        <div class="step goal">
+          <div class="label">Faixa 2</div>
+          <div class="value">R$ 40 a 50 mil/dia</div>
+          <div class="sub">segunda etapa de escala</div>
+        </div>
+      </div>
+
+      <ul class="list">
+        <li>
+          <div class="item-head"><span class="num">01</span><h3>Escala vertical e ajuste de lance</h3></div>
+          <ul>
+            <li>Nas estruturas já ativas que pagam por conversão ou por CPA desejado por interação.</li>
+            <li>Aumento do orçamento programado para superdimensionar a entrega.</li>
+            <li>Leve ajuste no CPA desejado conforme o leilão do dia.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="item-head"><span class="num">02</span><h3>Novas campanhas</h3></div>
+          <ul>
+            <li>Iniciar campanhas em <strong>MaxConv</strong> segmentadas para <strong>canais específicos já validados</strong>.</li>
+            <li>Manter em MaxConv até atingirem 50 a 100 conversões por dia.</li>
+            <li>Migrar para <strong>CPA desejado por interação</strong>, com aumento agressivo de orçamento.</li>
+            <li>Migração feita após a meia-noite do dia em que a campanha deve mudar de estratégia.</li>
+            <li>Após a migração, a campanha passa a compor a estrutura que paga por interação.</li>
+          </ul>
+        </li>
+        <li>
+          <div class="item-head"><span class="num">03</span><h3>Expansão de segmentação</h3></div>
+          <ul>
+            <li>Inserir novos tópicos e públicos no grupo de anúncios já ativo.</li>
+            <li>Ou criar novos grupos de anúncios com variações de segmentação.</li>
+            <li>Hoje: canais e tópico. Foco da expansão: público-alvo e outros tópicos.</li>
+          </ul>
+        </li>
+        <li class="base">
+          <div class="item-head"><span class="num">BASE</span><h3>Exclusões por script, hora a hora</h3></div>
+          <ul>
+            <li>Já em operação: o script exclui posicionamentos a cada hora com base em gasto por URL, impressões e outros critérios.</li>
+            <li>Manter o script rodando durante toda a escala.</li>
+            <li>Manter rotina de limpeza das exclusões feitas pelo script.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- R03 -->
+  <div class="panel" id="r03" role="tabpanel" hidden>
+    <header>
+      <div>
+        <div class="eyebrow">Mapeamento de operação</div>
+        <h1>SUB-R03</h1>
+      </div>
+    </header>
+    <section class="card">
+      <h2>Em construção</h2>
+      <p class="pending-note">Mapeamento ainda não preenchido.</p>
+      <ul class="pending-list">
+        <li>Cenário atual <span>a preencher</span></li>
+        <li>Segmentação usada atualmente <span>a preencher</span></li>
+        <li>Possibilidades de escala <span>a preencher</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- R04 -->
+  <div class="panel" id="r04" role="tabpanel" hidden>
+    <header>
+      <div>
+        <div class="eyebrow">Mapeamento de operação</div>
+        <h1>SUB-R04</h1>
+      </div>
+    </header>
+    <section class="card">
+      <h2>Em construção</h2>
+      <p class="pending-note">Mapeamento ainda não preenchido.</p>
+      <ul class="pending-list">
+        <li>Cenário atual <span>a preencher</span></li>
+        <li>Segmentação usada atualmente <span>a preencher</span></li>
+        <li>Possibilidades de escala <span>a preencher</span></li>
+      </ul>
+    </section>
+  </div>
+
+</div>
+<script>
+  (function () {
+    var tabs = document.querySelectorAll('.tab');
+    var panels = document.querySelectorAll('.panel');
+    function show(id) {
+      if (!document.getElementById(id)) id = 'r01';
+      tabs.forEach(function (t) {
+        var on = t.dataset.tab === id;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on);
+      });
+      panels.forEach(function (p) { p.hidden = p.id !== id; });
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        history.replaceState(null, '', '#' + t.dataset.tab);
+        show(t.dataset.tab);
+      });
+    });
+    window.addEventListener('hashchange', function () { show(location.hash.slice(1)); });
+    show(location.hash.slice(1));
+  })();
+</script>
+</body>
+</html>
