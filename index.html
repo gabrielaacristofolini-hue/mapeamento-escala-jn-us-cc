@@ -192,6 +192,29 @@
   .c-solid.r04 { background: #b9c8f0; color: var(--ink); }
   .c-ext.r01 { background: repeating-linear-gradient(135deg, var(--accent) 0 2px, #c9d6f6 2px 5px); }
 
+  /* Atualizações */
+  .updates { padding: 0; }
+  .updates summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 28px; }
+  .updates summary::-webkit-details-marker { display: none; }
+  .updates summary::after { content: ""; width: 8px; height: 8px; border-right: 2px solid var(--ink-3); border-bottom: 2px solid var(--ink-3); transform: rotate(45deg); margin-left: 4px; transition: transform .15s; }
+  .updates[open] summary::after { transform: rotate(-135deg); }
+  .sum-title { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+  .sum-hint { margin-left: auto; font-size: 12px; color: var(--ink-3); }
+  .updates[open] .sum-hint { display: none; }
+  .update { padding: 4px 28px 28px; border-top: 1px solid var(--line); display: grid; gap: 18px; }
+  .update-head { padding-top: 20px; }
+  .update-head .split-title { margin-bottom: 4px; }
+  .update-head p, .cmp-note { font-size: 13px; color: var(--ink-2); }
+  .cmp-note strong { color: var(--ink); }
+  .cmp-rows { display: grid; gap: 10px; }
+  .cmp-row { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; }
+  .cmp-label strong { display: block; font-size: 13px; }
+  .cmp-label span { font-size: 12px; color: var(--ink-3); }
+  .update .table-wrap { margin-bottom: 0; }
+  .update > .split-title { margin-bottom: -8px; }
+  .update .legend { margin-top: 0; }
+  .scale-table tr.total-last th, .scale-table tr.total-last td { border-top: 2px solid var(--line); }
+
   /* Placeholder */
   .pending-note { font-size: 14px; color: var(--ink-2); margin-bottom: 16px; }
   .pending-list { list-style: none; display: grid; gap: 8px; }
@@ -642,6 +665,76 @@
         </li>
       </ul>
     </section>
+
+    <details class="card updates">
+      <summary>
+        <span class="sum-title">Atualizações e comparações</span>
+        <span class="sum-hint">Clique para abrir</span>
+      </summary>
+
+      <div class="update">
+        <div class="update-head">
+          <div class="split-title">Comparação: 27 e 28/10 vs 23 a 26/10</div>
+          <p>Relação entre pagamento por conversão e pagamento por interação (volátil). Comparação feita pela média diária, já que os períodos têm tamanhos diferentes.</p>
+        </div>
+
+        <div class="cmp-rows">
+          <div class="cmp-row">
+            <div class="cmp-label"><strong>23/10 a 26/10</strong><span>4 dias</span></div>
+            <div class="bar">
+              <div class="seg a" style="width:77.3%">77,3% conversão</div>
+              <div class="seg v" style="width:22.7%">22,7%</div>
+            </div>
+          </div>
+          <div class="cmp-row">
+            <div class="cmp-label"><strong>27/10 a 28/10</strong><span>2 dias</span></div>
+            <div class="bar">
+              <div class="seg a" style="width:47.5%">47,5% conversão</div>
+              <div class="seg v" style="width:52.5%">52,5% volátil</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="cmp-note">O volátil passou a concentrar a maior parte do gasto: a participação do pagamento por conversão caiu de <strong>77,3%</strong> para <strong>47,5%</strong> (-29,8 p.p.), e o volátil subiu de <strong>22,7%</strong> para <strong>52,5%</strong>.</p>
+
+        <div class="table-wrap">
+          <table class="scale-table">
+            <thead>
+              <tr><th>Média diária de gasto</th><th>23/10 a 26/10</th><th>27/10 a 28/10</th><th>Variação</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><span class="row-name"><span class="dot" style="background:var(--accent)"></span>Pagamento por conversão</span></th>
+                <td><span class="v">R$ 14.037,16</span><span class="share">77,3% do total</span></td>
+                <td><span class="v">R$ 7.155,80</span><span class="share">47,5% do total</span></td>
+                <td><span class="v">- R$ 6.881,36</span><span class="share">-49,0%</span></td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="row-name"><span class="dot" style="background:var(--muted)"></span>Volátil</span></th>
+                <td><span class="v">R$ 4.127,70</span><span class="share">22,7% do total</span></td>
+                <td><span class="v">R$ 7.915,83</span><span class="share">52,5% do total</span></td>
+                <td><span class="v">+ R$ 3.788,13</span><span class="share">+91,8%</span></td>
+              </tr>
+              <tr class="total-last">
+                <th scope="row">Total</th>
+                <td><span class="v">R$ 18.164,86</span></td>
+                <td><span class="v">R$ 15.071,63</span></td>
+                <td><span class="v">- R$ 3.093,23</span><span class="share">-17,0%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="split-title">Detalhe de 27 e 28/10</div>
+        <div class="legend">
+          <div class="legend-row"><span class="dot" style="background:var(--accent)"></span><span>Pagamento por conversão, ID final 128</span><span class="amt">R$ 7.631,65</span><span class="pct">25,3%</span></div>
+          <div class="legend-row"><span class="dot" style="background:var(--accent-2)"></span><span>Pagamento por conversão, ID final 868</span><span class="amt">R$ 6.679,94</span><span class="pct">22,2%</span></div>
+          <div class="legend-row subtotal"><span></span><span>Subtotal pagamento por conversão<span class="leg-sub">1.933 conversões (48,4%)</span></span><span class="amt">R$ 14.311,59</span><span class="pct">47,5%</span></div>
+          <div class="legend-row"><span class="dot" style="background:var(--muted)"></span><span>Estrutura volátil (CPA por interação e MaxConv)<span class="leg-sub">2.064 conversões (51,6%)</span></span><span class="amt">R$ 15.831,66</span><span class="pct">52,5%</span></div>
+          <div class="legend-row total"><span></span><span>Total<span class="leg-sub">3.997 conversões</span></span><span class="amt">R$ 30.143,25</span><span class="pct">100%</span></div>
+        </div>
+      </div>
+    </details>
   </div>
 
   <!-- R03 -->
